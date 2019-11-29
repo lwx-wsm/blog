@@ -15,13 +15,13 @@ public interface UserService {
      * 用户登录功能
      *
      * @param userDto
-     * @return
+     * @return Result
      */
     Result signIn(UserDto userDto);
 
     /**
      * 获取热门用户信息
-     * @return
+     * @return Result
      */
     Result getHotUsers();
 
@@ -29,14 +29,14 @@ public interface UserService {
      * 获取分页用户信息
      * @param currentPage
      * @param count
-     * @return
+     * @return Result
      */
     Result selectByPage(int currentPage,int count);
 
     /**
      * 根据id查询用户详情数据
      * @param id
-     * @return
+     * @return Result
      */
     Result getUser(long id);
 
@@ -44,7 +44,22 @@ public interface UserService {
      * 根据昵称或简介模糊搜索用户
      *
      * @param keywords
-     * @return
+     * @return Result
      */
     Result selectByKeywords(String keywords);
+
+
+    /**
+     * 验证手机号是否可用
+     * @param mobile
+     * @return Result
+     */
+    Result checkMobile(String mobile);
+
+    /**
+     * 用户注册
+     * @param userDto
+     * @return Result
+     */
+    Result signUp(UserDto userDto);
 }

@@ -122,32 +122,6 @@ public class TopicDaoImpl implements TopicDao {
             admin.setNickname(rs.getString("nickname"));
             admin.setAvatar(rs.getString("avatar"));
             topicVo.setAdmin(admin);
-
-//            //专题所有文章
-//            String sql1 = "SELECT a.*,b.id,b.nickname,b.avatar " +
-//                    "FROM t_article a " +
-//                    "LEFT JOIN t_user b " +
-//                    "ON a.user_id = b.id " +
-//                    "WHERE a.topic_id = ?  ";
-//            PreparedStatement pst1 = connection.prepareStatement(sql1);
-//            pst1.setLong(1, rs.getLong("id"));
-//            ResultSet rs1 = pst.executeQuery();
-//            System.out.println(rs1.getRow());
-//            List<ArticleVo> articleVoList = BeanHandler.convertArticle(rs1);
-//            topicVo.setArticleList(articleVoList);
-//
-//            //专题所有关注者
-//            String sql2 = "SELECT b.id,b.nickname,b.avatar " +
-//                    "FROM t_topic_follow a " +
-//                    "LEFT JOIN t_user b " +
-//                    "ON a.user_id = b.id " +
-//                    "WHERE a.topic_id = ? ";
-//            PreparedStatement pst2 = connection.prepareStatement(sql2);
-//            pst2.setLong(1, rs.getLong("id"));
-//            ResultSet rs2 = pst2.executeQuery();
-//            System.out.println(rs2.getRow());
-//            List<User> followList = BeanHandler.convertUser(rs2);
-//            topicVo.setFollowList(followList);
         }
         DbUtil.close(connection, pst, rs);
         return topicVo;

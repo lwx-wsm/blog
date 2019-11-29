@@ -1,6 +1,7 @@
 package com.scs.web.blog.util;
 
 import com.scs.web.blog.entity.Article;
+import com.scs.web.blog.entity.Book;
 import com.scs.web.blog.entity.Topic;
 import com.scs.web.blog.entity.User;
 import com.scs.web.blog.factory.DaoFactory;
@@ -24,8 +25,8 @@ import java.util.List;
  * @Date 9:13 2019/11/7
  * @Version 1.0
  **/
-public class JSoupSpider {
-    private static Logger logger = LoggerFactory.getLogger(JSoupSpider.class);
+public class SpiderUtil {
+    private static Logger logger = LoggerFactory.getLogger(SpiderUtil.class);
 
     private static final int PAGE_COUNT = 1;
 
@@ -87,10 +88,9 @@ public class JSoupSpider {
             logger.error("查询所有专题失败");
         }
         assert topicList != null;
-        int len = topicList.size();
-        Document document = null;
         List<Article> articleList = new ArrayList<>(100);
-        for (Topic topic : topicList) {
+        topicList.forEach(topic -> {
+            Document document = null;
             try {
                 document = Jsoup.connect(topic.getHomepage()).get();
             } catch (IOException e) {
@@ -132,7 +132,7 @@ public class JSoupSpider {
                 article.setCreateTime(DataUtil.getCreateTime());
                 articleList.add(article);
             });
-        }
+        });
         return articleList;
     }
 
@@ -182,9 +182,31 @@ public class JSoupSpider {
         return topicList;
     }
 
+    public static List<Book> getBooks() {
+        ArrayList<Book> books = new ArrayList<>();
+//        new Thread(() -> {
+//            Document document = null;
+//            try {
+//                document = Jsoup.connect("https://search.jd.com/Search?keyword=Java&enc=utf-8&wq=Java&pvid=65629c406a7b42a3abaf09a5e0604c9f").get();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            assert document != null;
+//            Element goodsList = document.getElementById("J_goodsList");
+//            Element glWrap = goodsList.child(0);
+//            Elements glItem = glWrap.getElementsByClass("gl-item");
+////            System.out.println(glItem.size());
+//            glItem.forEach(item->{
+//                Element glItemWrap = item.child(0);
+//                System.out.println(glItemWrap.html());
+//                Element img = glItemWrap.select(".p-img a img").get(0);
+//                System.out.println(img.attr("src"));
+//            });
+//        }).start();
+        return books;
+    }
+
     public static void main(String[] args) {
-        List<User> userList = JSoupSpider.getUsers();
-        System.out.println(userList.size());
-        userList.forEach(System.out::println);
+        List<Book> books = SpiderUtil.getBooks();
     }
 }

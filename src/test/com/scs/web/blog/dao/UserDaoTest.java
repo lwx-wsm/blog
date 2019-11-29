@@ -2,7 +2,7 @@ package com.scs.web.blog.dao;
 
 import com.scs.web.blog.entity.User;
 import com.scs.web.blog.factory.DaoFactory;
-import com.scs.web.blog.util.JSoupSpider;
+import com.scs.web.blog.util.SpiderUtil;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -12,8 +12,14 @@ public class UserDaoTest {
     private UserDao userDao = DaoFactory.getUserDaoInstance();
 
     @Test
+    public void insert() throws SQLException {
+        User user = new User("13988887777","111");
+        userDao.insert(user);
+    }
+
+    @Test
     public void batchInsert() throws SQLException {
-        userDao.batchInsert(JSoupSpider.getUsers());
+        userDao.batchInsert(SpiderUtil.getUsers());
     }
 
     @Test

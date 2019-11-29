@@ -1,12 +1,12 @@
 package com.scs.web.blog.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+        import org.slf4j.Logger;
+        import org.slf4j.LoggerFactory;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+        import javax.servlet.*;
+        import javax.servlet.annotation.WebFilter;
+        import javax.servlet.http.HttpServletResponse;
+        import java.io.IOException;
 
 /**
  * @author mq_xu
@@ -32,7 +32,6 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         chain.doFilter(req, res);
     }
-
 
     @Override
     public void init(FilterConfig filterConfig) {

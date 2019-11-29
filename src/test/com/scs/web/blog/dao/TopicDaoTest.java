@@ -3,7 +3,7 @@ package com.scs.web.blog.dao;
 import com.scs.web.blog.domain.vo.TopicVo;
 import com.scs.web.blog.entity.Topic;
 import com.scs.web.blog.factory.DaoFactory;
-import com.scs.web.blog.util.JSoupSpider;
+import com.scs.web.blog.util.SpiderUtil;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ public class TopicDaoTest {
 
     @Test
     public void batchInsert() throws SQLException {
-        topicDao.batchInsert(JSoupSpider.getTopics());
+        topicDao.batchInsert(SpiderUtil.getTopics());
     }
 
     @Test

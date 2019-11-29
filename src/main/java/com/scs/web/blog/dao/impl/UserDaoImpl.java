@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1, user.getMobile());
         pst.setString(2, user.getPassword());
-        int n = pst.executeUpdate();
+        pst.executeUpdate();
         DbUtil.close(connection, pst);
     }
 
@@ -75,7 +75,11 @@ public class UserDaoImpl implements UserDao {
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1, mobile);
         ResultSet rs = pst.executeQuery();
-        User user = BeanHandler.convertUser(rs).get(0);
+        List<User> userList = BeanHandler.convertUser(rs);
+        User user = null;
+        if (userList.size() != 0) {
+            user = userList.get(0);
+        }
         DbUtil.close(connection, pst, rs);
         return user;
     }

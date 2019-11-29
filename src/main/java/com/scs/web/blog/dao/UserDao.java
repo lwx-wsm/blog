@@ -10,7 +10,7 @@ import java.util.List;
  * @author mq_xu
  * @ClassName UserDao
  * @Description UserDao数据访问对象接口
- * @Date 10:54 2019/11/9
+ * @Date 2019/11/9
  * @Version 1.0
  **/
 public interface UserDao {
@@ -50,7 +50,8 @@ public interface UserDao {
 
     /**
      * 查询分页用户
-     *
+     * @param currentPage
+     * @param count
      * @return
      * @throws SQLException
      */

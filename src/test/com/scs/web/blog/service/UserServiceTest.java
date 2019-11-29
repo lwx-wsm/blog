@@ -22,4 +22,19 @@ public class UserServiceTest {
         Result result = userService.getHotUsers();
         System.out.println(result);
     }
+
+    @Test
+    public void checkMobile() {
+        Result result = userService.checkMobile("13951905172");
+        System.out.println(result);
+    }
+
+    @Test
+    public void signUp() {
+        UserDto user = new UserDto();
+        user.setMobile("13433332222");
+        user.setPassword("111");
+        Result result = userService.signUp(user);
+        System.out.println(result);
+    }
 }
