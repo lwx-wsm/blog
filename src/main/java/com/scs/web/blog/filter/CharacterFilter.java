@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author mq_xu
  * @ClassName CharacterFilter
  * @Description 字符集过滤器,过滤请求和响应字符集，统一响应类型
- * @Date 15:56 2019/11/9
+ * @Date 2019/11/9
  * @Version 1.0
  **/
 @WebFilter(urlPatterns = "/*")

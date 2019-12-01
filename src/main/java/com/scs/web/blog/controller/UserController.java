@@ -38,22 +38,20 @@ public class UserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURI().trim();
-        switch (uri) {
-            case UrlPatten.USER:
-                String page = req.getParameter("page");
-                String keywords = req.getParameter("keywords");
-                String count = req.getParameter("count");
-                if (page != null) {
-                    HttpUtil.getResponseBody(resp, userService.selectByPage(Integer.parseInt(page), Integer.parseInt(count)));
-                } else if (keywords != null) {
-                    HttpUtil.getResponseBody(resp, userService.selectByKeywords(keywords));
-                } else {
-                    HttpUtil.getResponseBody(resp, userService.getHotUsers());
-                }
-                break;
-            case UrlPatten.USER_SUB:
-                HttpUtil.getResponseBody(resp, userService.getUser(Long.parseLong(HttpUtil.getPathParam(req))));
-            default:
+        if (UrlPatten.USER.equals(uri)) {
+            String page = req.getParameter("page");
+            String keywords = req.getParameter("keywords");
+            String count = req.getParameter("count");
+            if (page != null) {
+                HttpUtil.getResponseBody(resp, userService.selectByPage(Integer.parseInt(page), Integer.parseInt(count)));
+            } else if (keywords != null) {
+                HttpUtil.getResponseBody(resp, userService.selectByKeywords(keywords));
+            } else {
+                HttpUtil.getResponseBody(resp, userService.getHotUsers());
+            }
+        } else {
+            System.out.println(uri);
+            HttpUtil.getResponseBody(resp, userService.getUser(Long.parseLong(HttpUtil.getPathParam(req))));
         }
     }
 

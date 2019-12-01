@@ -1,7 +1,6 @@
 package com.scs.web.blog.util;
 
 import com.scs.web.blog.entity.Article;
-import com.scs.web.blog.entity.Book;
 import com.scs.web.blog.entity.Topic;
 import com.scs.web.blog.entity.User;
 import com.scs.web.blog.factory.DaoFactory;
@@ -22,7 +21,7 @@ import java.util.List;
  * @author mq_xu
  * @ClassName JSoupSpider
  * @Description JSoup爬虫，抓取数据
- * @Date 9:13 2019/11/7
+ * @Date 2019/11/7
  * @Version 1.0
  **/
 public class SpiderUtil {
@@ -182,31 +181,7 @@ public class SpiderUtil {
         return topicList;
     }
 
-    public static List<Book> getBooks() {
-        ArrayList<Book> books = new ArrayList<>();
-//        new Thread(() -> {
-//            Document document = null;
-//            try {
-//                document = Jsoup.connect("https://search.jd.com/Search?keyword=Java&enc=utf-8&wq=Java&pvid=65629c406a7b42a3abaf09a5e0604c9f").get();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            assert document != null;
-//            Element goodsList = document.getElementById("J_goodsList");
-//            Element glWrap = goodsList.child(0);
-//            Elements glItem = glWrap.getElementsByClass("gl-item");
-////            System.out.println(glItem.size());
-//            glItem.forEach(item->{
-//                Element glItemWrap = item.child(0);
-//                System.out.println(glItemWrap.html());
-//                Element img = glItemWrap.select(".p-img a img").get(0);
-//                System.out.println(img.attr("src"));
-//            });
-//        }).start();
-        return books;
-    }
 
     public static void main(String[] args) {
-        List<Book> books = SpiderUtil.getBooks();
     }
 }
